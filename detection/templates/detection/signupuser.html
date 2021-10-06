@@ -1,0 +1,44 @@
+{% extends "detection/base.html" %}
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <h2>Sign Up</h2>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+        {{ error }}
+        </div>
+        {% endif %}
+        <form method="POST">
+        {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter your Username">
+                <small id="usernameHelp" class="form-text text-muted">Your username must be unique. We'll let you know if someone has taken it already.</small>
+            </div>
+            <div class="form-group">
+                <label for="password1">Password</label>
+                <input type="password" name="password1" class="form-control" id="password1" aria-describedby="usernameHelp" placeholder="Enter your Password">
+                <small id="usernameHelp" class="form-text text-muted">Your password must be 8-20 characters long, contain letters and numbers.</small>
+            </div>
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" name="password2" class="form-control" id="password2" aria-describedby="usernameHelp" placeholder="Retype your Password">
+                <small id="usernameHelp" class="form-text text-muted">Retype Password</small>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Sign Up</button> &nbsp
+            <button type="reset" class="btn btn-primary">Reset</button>
+        </form>
+            <hr><br>
+        <div class="text-center">
+            Do you already have an account? &nbsp <a href="{% url 'loginuser' %}">Login here</a><br><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "detection/base.html" %}
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        {% if history %}
+             <h1>You have {{ history.count }} Detection{{ history.count|pluralize }}</h1>
+        {% else %}
+                       <h2>Covid-19 Detection History</h2>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+    {% if history %}
+        <div class="list-group">
+            {% for data in history %}
+                <a href="{% url 'updatedata' data.id %}" class="list-group-item list-group-item-success">
+                    <img src="{{ data.image.url }}" alt="connect" width="125" 
+                    height="120" style="float:right">
+                    <b>{{ data.fname }}</b> &nbsp <b>{{ data.lname }}</b>
+                    <br><b>{% if data.gender == 'male' %} Male, {% else %} Female, {% endif %}</b> &nbsp <b>{{ data.age }}</b>
+                    <br><b>{% if data.predictions == 'covid' %} Covid Positive, {% elif data.predictions == 'pneumonia' %}
+                         Viral Pneumonia {% elif data.predictions == 'normal' %} Covid Negative {% else %} None {% endif %}</b> 
+                    <br>
+                    <br><b>{{ data.created }}</b>
+                    </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center">
+            <h4>It looks like you don't have any detection information! </h4>
+        <br>
+        <a class="btn-solid-lg page-scroll" href="{% url 'makedetect' %}">Make New Detection</a>
+        </div>
+    {% endif %}
+    </div>
+</div>
+<br><br>
+
+{% endblock %}

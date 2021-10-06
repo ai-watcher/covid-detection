@@ -1,0 +1,96 @@
+{% extends "detection/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<!-- Statement -->
+<div id="statement" class="basic-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-container">
+                    <h3>The Web Application is designed to detect Covid-19 & Viral Pneumonia</h3>
+                    <p class="p-large">“I've designed this Web Application based on a Deep Convolutional
+                                         Neural Network with the help of the Tensorflow & Django framework. 
+                                         It uses Chest X-Rays to detect covid with higher accuracy in real-time.”</p>
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of basic-1 -->
+<!-- end of statement -->
+
+<!-- Features -->
+<div id="features" class="basic-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="text-box bg-gray">
+                    <i class="fas fa-rocket"></i>
+                    <h4>Covid-19</h4>
+                    <p>The model quickly determines whether or not the chest x-ray has covid-19 patterns.</p>
+                </div> <!-- end of text-box -->
+            </div> <!-- end of col -->
+            <div class="col-lg-4">
+                <div class="text-box bg-gray">
+                    <i class="fas fa-images"></i>
+                    <h4>Viral Pneumonia</h4>
+                    <p>It can quickly detect whether the chest x-ray has pneumonia patterns or not and display the result.</p>
+                </div> <!-- end of text-box -->
+            </div> <!-- end of col -->
+            <div class="col-lg-4">
+                <div class="text-box bg-gray">
+                    <i class="fas fa-download"></i>
+                    <h4>Tensorflow Framework</h4>
+                    <p>TensorFlow is a free and open-source machine learning and artificial intelligence framework.</p>
+                </div> <!-- end of text-box -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="text-box bg-gray">
+                    <i class="fas fa-cog"></i>
+                    <h4>Fast & Accurate</h4>
+                    <p>The model's detection rate is 90% accurate, and the results are displayed in real-time on the screen.</p>
+                </div> <!-- end of text-box -->
+            </div> <!-- end of col -->
+            <div class="col-lg-4">
+                <div class="text-box bg-gray">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>Neural Netork</h4>
+                    <p>Deep Convolution Neural Network is used to train the model to detect covid & pneumonia patterns.</p>
+                </div> <!-- end of text-box -->
+            </div> <!-- end of col -->
+            <div class="col-lg-4">
+                <div class="text-box bg-gray">
+                    <i class="fas fa-award"></i>
+                    <h4>Easy To Use</h4>
+                    <p>This Web App is easy to use. Users should register and provide details of patients to make a detection.</p>
+                </div> <!-- end of text-box -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of basic-4 -->
+<!-- end of features -->
+
+<!-- Invitation -->
+<div class="basic-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-container bg-gray">
+                    <h4>Make a new Covid-19 & Viral Pneumonia Detection. Click below to start the detection.</h4>
+                    {% if user.is_authenticated %}
+                    <a class="btn-solid-lg page-scroll" href="{% url 'makedetect' %}">Make Detection</a>
+                    {% else %}
+                    <a class="btn-solid-lg page-scroll" href="{% url 'signupuser' %}">Make Detection</a>
+                    {% endif %}
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of basic-6 -->
+<!-- end of invitation -->
+
+{% endblock content %}

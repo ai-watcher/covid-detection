@@ -1,0 +1,60 @@
+{% load static %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+    <div class="container">
+        
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Name</a> -->
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="{% url 'home' %}">
+            <img src="{% static 'images/covidlogo.png' %}" alt="alternative">
+        </a> 
+
+        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{% url 'home' %}">Home</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{% url 'makedetect' %}">New Detection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{% url 'history' %}">History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
+                    <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
+                        {% csrf_token %}
+                        <button id="signOutBtn" type="submit">Logout</button>
+                    </form>
+                </li>
+                
+                {% else %}
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'signupuser' %}">Sign Up</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'loginuser' %}">Login</a>
+                </li>
+                
+                {% endif %}
+            </ul>
+
+        </div> <!-- end of navbar-collapse -->
+    </div> <!-- end of container -->
+</nav> <!-- end of navbar -->
+<!-- end of navigation -->
